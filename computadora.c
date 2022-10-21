@@ -109,6 +109,8 @@ void agregarComputadoras(Computadora computadoras[], int cantidad)
 
 void mostrarComputadoras(Computadora computadoras[])
 {
+    printf("\nLista de computadoras:");
+
     for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
     {
         if(computadoras[i]->cantidadRAM != -1)
@@ -117,6 +119,27 @@ void mostrarComputadoras(Computadora computadoras[])
         }
     }
 }
+
+void ordenarComputadorasPorRAM(Computadora computadoras[])
+{
+    Computadora auxiliarComputadora;
+
+    printf("\nOrdenando por cantidad de RAM instalada...");
+
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        for(int j = 0; j < CANTIDAD_COMPUTADORAS - 1; j++)
+        {
+            if(computadoras[j]->cantidadRAM > computadoras[j+1]->cantidadRAM)
+            {
+                auxiliarComputadora = computadoras[j];
+                computadoras[j] = computadoras[j+1];
+                computadoras[j+1] = auxiliarComputadora;
+            }
+        }
+    }
+}
+
 
 
  /*----------------------------
