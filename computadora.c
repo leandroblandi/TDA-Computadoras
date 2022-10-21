@@ -141,7 +141,6 @@ void ordenarComputadorasPorRAM(Computadora computadoras[])
 }
 
 
-
  /*----------------------------
  | Procedimientos extras
  ------------------------------*/
@@ -160,3 +159,50 @@ int buscar(Computadora computadoras[], int elemento)
     }
     return encontrado;
 }
+
+
+ /*----------------------------
+ | Procedimientos de archivo
+ ------------------------------*/
+
+Computadora parsearDatos(char datos[55])
+{
+    char procesador[30];
+    char placaDeVideo[20];
+    char cantidadRAM[5];
+
+    strcpy(procesador, strtok(datos, '-'));
+    strcpy(placaDeVideo, strtok(datos, '-'));
+    strcpy(cantidadRAM, strtok(datos, '-'));
+
+    return crearComputadora(procesador, placaDeVideo, atoi(cantidadRAM));
+
+}
+
+void cargarComputadorasDesdeArchivo(Computadora computadoras[])
+{
+    FILE * archivoComputadoras = fopen("computadoras.txt", "r");
+
+    char datos[55] = "";
+    int i = 0;
+
+    if(archivoComputadoras == NULL)
+    {
+        printf("\nArchivo no encontrado: \"computadoras.txt\", cree uno nuevo");
+    }
+
+    while((fgets(datos, 55, archivoComputadoras)) && (i < CANTIDAD_COMPUTADORAS))
+    {
+        computadoras[i] = parsearDatos(datos);
+        i++;
+    }
+
+}
+
+void guardarComputadorasEnArhivo(Computadora computadoras[])
+{
+    FILE * archivoComputadoras = fopen("computadoras.txt", "w");
+
+}
+
+

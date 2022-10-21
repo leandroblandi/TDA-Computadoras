@@ -37,4 +37,11 @@ void destruirComputadora(Computadora computadora);
 
  int buscar(Computadora computadoras[], int elemento);
 
+  /*----------------------------
+ | Procedimientos de archivo
+ ------------------------------*/
+ Computadora parsearDatos(char datos[55]);
+ void cargarComputadorasDesdeArchivo(Computadora computadoras[]);
+ void guardarComputadorasEnArhivo(Computadora computadoras[]);
+
 #endif // COMPUTADORA_H_INCLUDED

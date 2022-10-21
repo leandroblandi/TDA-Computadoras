@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1666391588 source:c:\users\el3be\documents\practicas en c\tda_computadoras\tda_computadoras\main.c
+1666394627 source:c:\users\el3be\documents\practicas en c\tda_computadoras\tda_computadoras\main.c
 	<stdio.h>
 	<stdlib.h>
 	"computadora.h"
 
-1666391598 c:\users\el3be\documents\practicas en c\tda_computadoras\tda_computadoras\computadora.h
+1666395074 c:\users\el3be\documents\practicas en c\tda_computadoras\tda_computadoras\computadora.h
 
 1666391791 source:c:\users\el3be\documents\practicas en c\tda_computadoras\tda_computadoras\computadora.c
 	<stdio.h>
