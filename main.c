@@ -9,9 +9,7 @@ int main()
 
     Computadora computadoras[CANTIDAD_COMPUTADORAS];
     inicializarComputadoras(computadoras);
-    agregarComputadoras(computadoras, 2);
-    mostrarComputadoras(computadoras);
-    ordenarComputadorasPorRAM(computadoras);
+    cargarComputadorasDesdeArchivo(computadoras);
     mostrarComputadoras(computadoras);
 
     return 0;

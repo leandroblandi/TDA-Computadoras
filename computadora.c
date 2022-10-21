@@ -120,6 +120,60 @@ void mostrarComputadoras(Computadora computadoras[])
     }
 }
 
+void modificarComputadora(Computadora computadoras[], char procesador[30])
+{
+    printf("\nModificando una computadora:");
+
+    int encontrada = NO_ENCONTRADO;
+
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        if(strcmp(computadoras[i]->procesador, procesador) == 0)
+        {
+            printf("\nIngrese nuevo procesador (ant: %s)", computadoras[i]->procesador);
+            fflush(stdin);
+            gets(computadoras[i]->procesador);
+
+            printf("\nIngrese nueva placa de video (ant: %s)", computadoras[i]->placaDeVideo);
+            fflush(stdin);
+            gets(computadoras[i]->placaDeVideo);
+
+            printf("\nIngrese nueva RAM instalada (ant: %dGB)", computadoras[i]->cantidadRAM);
+            scanf("%D", &computadoras[i]->cantidadRAM);
+        }
+    }
+    if(encontrada == NO_ENCONTRADO)
+    {
+        printf("\nLa computadora no se encuentra en memoria para modificar...");
+    }
+}
+
+void eliminarComputadora(Computadora computadora[], char procesador[30])
+{
+    printf("\nEliminando una computadora:");
+
+    int encontrada = NO_ENCONTRADO;
+
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        if(strcmp(computadoras[i]->procesador, procesador) == 0)
+        {
+            strcpy(computadoras[i]->procesador, "");
+            strcpy(computadoras[i]->placaDeVideo, "");
+            computadoras[i]->cantidadRAM = -1;
+
+            encontrada = i;
+            i = CANTIDAD_COMPUTADORAS;
+
+            printf("\nComputadora eliminada exitosamente...");
+        }
+    }
+    if(encontrada == NO_ENCONTRADO)
+    {
+        printf("\nLa computadora no se encuentra en memoria para eliminar...");
+    }
+}
+
 void ordenarComputadorasPorRAM(Computadora computadoras[])
 {
     Computadora auxiliarComputadora;
@@ -171,9 +225,15 @@ Computadora parsearDatos(char datos[55])
     char placaDeVideo[20];
     char cantidadRAM[5];
 
-    strcpy(procesador, strtok(datos, '-'));
-    strcpy(placaDeVideo, strtok(datos, '-'));
-    strcpy(cantidadRAM, strtok(datos, '-'));
+    /*--------------------------------------------------------------------------------
+    | Si no se comprenden las siguientes tres lineas, acuda a los siguientes links:
+    | ------------------------------------------------------------------------------
+    | - https://parzibyte.me/blog/2018/11/13/separar-cadena-delimitadores-c-strtok/
+    | - https://www.youtube.com/watch?v=jHdbmHCVQ2c
+    --------------------------------------------------------------------------------*/
+    strcpy(procesador, strtok(datos, "-"));
+    strcpy(placaDeVideo, strtok(NULL, "-"));
+    strcpy(cantidadRAM, strtok(NULL, "-"));
 
     return crearComputadora(procesador, placaDeVideo, atoi(cantidadRAM));
 
@@ -197,12 +257,15 @@ void cargarComputadorasDesdeArchivo(Computadora computadoras[])
         i++;
     }
 
+    fclose(archivoComputadoras);
+
 }
 
 void guardarComputadorasEnArhivo(Computadora computadoras[])
 {
     FILE * archivoComputadoras = fopen("computadoras.txt", "w");
-
+    fclose(archivoComputadoras);
+    return;
 }
 
 
