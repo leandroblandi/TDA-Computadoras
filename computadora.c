@@ -43,9 +43,11 @@ Computadora crearComputadoraPorTeclado()
 
     printf("\nNueva computadora:");
     printf("\n- Ingrese que procesador dispondra la computadora: ");
+    fflush(stdin);
     gets(procesador);
 
     printf("\n- Ingrese que placa de video dispondra la computadora: ");
+    fflush(stdin);
     gets(placaDeVideo);
 
     printf("\n- Ingrese cuanta memoria RAM tendra instalada la computadora: ");
@@ -72,7 +74,7 @@ void mostrarComputadora(Computadora computadora)
  | Destructor
  -------------*/
 
-void destruirComputadora(Computadora computadora);
+void destruirComputadora(Computadora computadora)
 {
     free(computadora);
 }
@@ -102,9 +104,20 @@ void agregarComputadoras(Computadora computadoras[], int cantidad)
         {
             computadoras[posicion] = crearComputadoraPorTeclado();
         }
-
     }
 }
+
+void mostrarComputadoras(Computadora computadoras[])
+{
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        if(computadoras[i]->cantidadRAM != -1)
+        {
+            mostrarComputadora(computadoras[i]);
+        }
+    }
+}
+
 
  /*----------------------------
  | Procedimientos extras
@@ -116,7 +129,7 @@ int buscar(Computadora computadoras[], int elemento)
 
     for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
     {
-        if(computadoras->cantidadRAM == elemento)
+        if(computadoras[i]->cantidadRAM == elemento)
         {
             encontrado = i;
             i = CANTIDAD_COMPUTADORAS;

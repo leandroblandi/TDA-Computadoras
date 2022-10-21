@@ -27,6 +27,7 @@ void destruirComputadora(Computadora computadora);
 
  void inicializarComputadoras(Computadora computadoras[]);
  void agregarComputadoras(Computadora computadoras[], int cantidad);
+ void mostrarComputadoras(Computadora computadoras[]);
 
 
  /*----------------------------
