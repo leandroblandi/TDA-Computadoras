@@ -8,6 +8,9 @@
 #include <string.h>
 #include "computadora.h"
 
+#define CANTIDAD_COMPUTADORAS 5
+#define NO_ENCONTRADO -1
+
 struct _Computadora
 {
     char procesador[30];
@@ -72,4 +75,52 @@ void mostrarComputadora(Computadora computadora)
 void destruirComputadora(Computadora computadora);
 {
     free(computadora);
+}
+
+
+/*----------------------------
+ | Procedimientos de arreglo
+ ------------------------------*/
+
+void inicializarComputadoras(Computadora computadoras[])
+{
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        computadoras[i] = crearComputadora("", "", -1);
+    }
+}
+
+void agregarComputadoras(Computadora computadoras[], int cantidad)
+{
+    int posicion = NO_ENCONTRADO;
+
+    for(int i = 0; i < cantidad; i++)
+    {
+        posicion = buscar(computadoras, -1);
+
+        if(posicion != -1)
+        {
+            computadoras[posicion] = crearComputadoraPorTeclado();
+        }
+
+    }
+}
+
+ /*----------------------------
+ | Procedimientos extras
+ ------------------------------*/
+
+int buscar(Computadora computadoras[], int elemento)
+{
+    int encontrado = NO_ENCONTRADO;
+
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        if(computadoras->cantidadRAM == elemento)
+        {
+            encontrado = i;
+            i = CANTIDAD_COMPUTADORAS;
+        }
+    }
+    return encontrado;
 }

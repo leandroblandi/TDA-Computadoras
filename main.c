@@ -8,5 +8,6 @@ int main()
     Computadora computadora = crearComputadoraPorTeclado();
     mostrarComputadora(computadora);
 
+
     return 0;
 }
