@@ -130,15 +130,15 @@ void modificarComputadora(Computadora computadoras[], char procesador[30])
     {
         if(strcmp(computadoras[i]->procesador, procesador) == 0)
         {
-            printf("\nIngrese nuevo procesador (ant: %s)", computadoras[i]->procesador);
+            printf("\nIngrese nuevo procesador (ant: %s): ", computadoras[i]->procesador);
             fflush(stdin);
             gets(computadoras[i]->procesador);
 
-            printf("\nIngrese nueva placa de video (ant: %s)", computadoras[i]->placaDeVideo);
+            printf("\nIngrese nueva placa de video (ant: %s): ", computadoras[i]->placaDeVideo);
             fflush(stdin);
             gets(computadoras[i]->placaDeVideo);
 
-            printf("\nIngrese nueva RAM instalada (ant: %dGB)", computadoras[i]->cantidadRAM);
+            printf("\nIngrese nueva RAM instalada (ant: %dGB): ", computadoras[i]->cantidadRAM);
             scanf("%d", &computadoras[i]->cantidadRAM);
 
             encontrada = i;
@@ -267,6 +267,20 @@ void cargarComputadorasDesdeArchivo(Computadora computadoras[])
 void guardarComputadorasEnArhivo(Computadora computadoras[])
 {
     FILE * archivoComputadoras = fopen("computadoras.txt", "w");
+
+    for(int i = 0; i < CANTIDAD_COMPUTADORAS; i++)
+    {
+        if(computadoras[i]->cantidadRAM != -1)
+        {
+            fprintf(
+                archivoComputadoras,
+                "%s-%s-%d\n",
+                computadoras[i]->procesador,
+                computadoras[i]->placaDeVideo,
+                computadoras[i]->cantidadRAM
+            );
+        }
+    }
     fclose(archivoComputadoras);
     return;
 }
