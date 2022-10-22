@@ -139,7 +139,10 @@ void modificarComputadora(Computadora computadoras[], char procesador[30])
             gets(computadoras[i]->placaDeVideo);
 
             printf("\nIngrese nueva RAM instalada (ant: %dGB)", computadoras[i]->cantidadRAM);
-            scanf("%D", &computadoras[i]->cantidadRAM);
+            scanf("%d", &computadoras[i]->cantidadRAM);
+
+            encontrada = i;
+            i = CANTIDAD_COMPUTADORAS;
         }
     }
     if(encontrada == NO_ENCONTRADO)
@@ -148,7 +151,7 @@ void modificarComputadora(Computadora computadoras[], char procesador[30])
     }
 }
 
-void eliminarComputadora(Computadora computadora[], char procesador[30])
+void eliminarComputadora(Computadora computadoras[], char procesador[30])
 {
     printf("\nEliminando una computadora:");
 

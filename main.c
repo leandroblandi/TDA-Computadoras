@@ -12,5 +12,10 @@ int main()
     cargarComputadorasDesdeArchivo(computadoras);
     mostrarComputadoras(computadoras);
 
+    modificarComputadora(computadoras, "Ryzen 5 5600G");
+    eliminarComputadora(computadoras, "Intel i9 12900K");
+
+    mostrarComputadoras(computadoras);
+
     return 0;
 }
